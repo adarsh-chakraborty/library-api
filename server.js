@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 const libraryRoutes = require('./Routes/libraryRoutes');
-
+app.set('json spaces', 4);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -12,7 +12,10 @@ Router.post('/books', (req, res, next) => {
 	const { name, book, author, price } = req.body;
 
 	if (!name || !book || !author || !price) {
-		return res.send('Error: all fields are required!');
+		let msg = `Abe ${name ? '' : 'name,'}${book ? '' : 'book,'}${
+			author ? '' : 'author,'
+		}${price ? '' : 'price'} kon dega be?`;
+		return res.status(400).send(msg);
 	}
 
 	Book.create({
@@ -22,7 +25,7 @@ Router.post('/books', (req, res, next) => {
 		price
 	}).then((doc) => {
 		res.json({
-			result: 'sucess',
+			result: 'success',
 			...doc._doc
 		});
 	});
