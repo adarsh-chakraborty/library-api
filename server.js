@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 
 mongoose.connect(process.env.MONGODB_URI, () => {
 	console.log('Connected to mongodb (Hopefully), starting server...');
-	app.listen(3000, () => {
+	app.listen(PORT, () => {
 		console.log('listening on port: ' + PORT);
 	});
 });
