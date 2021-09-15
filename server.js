@@ -10,7 +10,7 @@ const libraryRoutes = require('./Routes/libraryRoutes');
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-app.use('/projects/library', libraryRoutes);
+app.use('/library', libraryRoutes);
 
 app.use((req, res, next) => {
 	res.send(`<p><strong>Hii, You're too soon,&nbsp;</strong></p>
