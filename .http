@@ -1,0 +1,9 @@
+POST https://adarsh.gq/library/books
+Content-Type: application/json
+
+{
+    "name": "Adarsh Chakraborty",
+    "book": "The Picture of Dorian Gray ",
+    "author": "Oscar Wilde (1891)",
+    "price": "$200"
+}

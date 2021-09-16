@@ -11,11 +11,41 @@ app.set('json spaces', 4);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/library', libraryRoutes);
+// app.use('/library', libraryRoutes);
 
 app.use((req, res, next) => {
-	res.send(`<p><strong>Hii, You're too soon,&nbsp;</strong></p>
-    <p><strong>This site is under construction, check back later! <img src="https://html-online.com/editor/tiny4_9_11/plugins/emoticons/img/smiley-laughing.gif" alt="laughing" /></strong></p>`);
+	res.send(` <!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Error 400</title>
+		<style>
+			
+			h2 {
+				padding-left: 20px;
+				padding-top: 5px;
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				
+			}
+
+			h3{
+				font-family: Arial, Helvetica, sans-serif;
+				padding-left: 20px;
+				
+			}
+
+
+
+		</style>
+	</head>
+	<body>
+		<h2>Response 400 Bad Request</h2>
+		<h3>Get the fuck outta here</h3>
+	</body>
+	</html>
+	`);
 });
 
 mongoose.connect(process.env.MONGODB_URI, () => {
