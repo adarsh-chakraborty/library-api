@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/library', libraryRoutes);
 
 app.use((req, res, next) => {
-	res.send(` <!DOCTYPE html>
+	res.status(400).send(` <!DOCTYPE html>
 	<html lang="en">
 	<head>
 		<meta charset="UTF-8">
