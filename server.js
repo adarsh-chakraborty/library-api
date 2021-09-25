@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 	</head>
 	<body>
 		<h2>Response 400 Bad Request</h2>
-		<h3>Get the fuck outta here</h3>
+		<h3>This site is under construction, visit later.</h3>
 	</body>
 	</html>
 	`);

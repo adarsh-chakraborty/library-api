@@ -20,7 +20,7 @@ Router.post('/books', (req, res, next) => {
 		let msg = `Abe ${name ? '' : 'name,'}${book ? '' : 'book,'}${
 			author ? '' : 'author,'
 		}${price ? '' : 'price'} kon dega be?`;
-		return res.status(400).send(msg);
+		return res.status(400).json({ error: msg, status: 400 });
 	}
 
 	Book.create({
