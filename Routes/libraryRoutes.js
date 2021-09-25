@@ -2,11 +2,14 @@ const express = require('express');
 const Router = express.Router();
 const Book = require('../Model/Book');
 
+
 Router.get('/books', (req, res, next) => {
 	Book.find().then((books) => {
 		res.json(books);
 	});
 });
+
+
 
 Router.post('/books', (req, res, next) => {
 	const { name, book, author, price } = req.body;

@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -11,7 +11,7 @@ app.set('json spaces', 4);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use('/library', libraryRoutes);
+app.use('/library', libraryRoutes);
 
 app.use((req, res, next) => {
 	res.status(400).send(` <!DOCTYPE html>
