@@ -4,9 +4,11 @@ const Book = require('../Model/Book');
 
 
 Router.get('/books', (req, res, next) => {
-	Book.find().then((books) => {
-		res.json(books);
-	});
+	Book.find()
+		.select('-__v -_id')
+		.then((books) => {
+			res.json(books);
+		});
 });
 
 
