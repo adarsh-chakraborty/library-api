@@ -1,3 +1,6 @@
+if (!process.env.HEROKU) {
+	require('dotenv').config();
+}
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -33,9 +36,6 @@ app.use((req, res, next) => {
 				padding-left: 20px;
 				
 			}
-
-
-
 		</style>
 	</head>
 	<body>

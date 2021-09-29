@@ -3,7 +3,20 @@ const Router = express.Router();
 const Book = require('../Model/Book');
 
 
-Router.get('/books', (req, res, next) => {
+function checkToken(req, res, next) {
+	const token = req.headers['token'];
+	console.log(token);
+	if (!token) {
+		return res.status(400).json({ error: 'Unauthorized request', status: 400 });
+	}
+	if (token !== 'superdoge1234') {
+		return res.status(400).json({ error: 'Unauthorized request', status: 400 });
+	}
+	console.log(token);
+	next();
+}
+
+Router.get('/books', checkToken, (req, res, next) => {
 	Book.find()
 		.select('-__v -_id')
 		.then((books) => {
@@ -11,11 +24,9 @@ Router.get('/books', (req, res, next) => {
 		});
 });
 
-
-
-Router.post('/books', (req, res, next) => {
+Router.post('/books', checkToken, (req, res, next) => {
 	const { name, book, author, price } = req.body;
-
+	console.log(req.body);
 	if (!name || !book || !author || !price) {
 		let msg = `Abe ${name ? '' : 'name,'}${book ? '' : 'book,'}${
 			author ? '' : 'author,'

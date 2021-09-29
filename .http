@@ -4,6 +4,18 @@ Content-Type: application/json
 {
     "name": "Adarsh Chakraborty",
     "book": "The Picture of Dorian Gray ",
-    "author": "Oscar Wilde (1891)",
+    "price": "$200"
+}
+
+###
+POST http://localhost:3000/library/books
+Content-Type: application/json
+token: superdoge1234
+
+
+{
+    "name": "Adarsh Chakraborty",
+    "book": "The Picture of Dorian Gray ",
+    "author": "The Picture of Dorian Gray ",
     "price": "$200"
 }
