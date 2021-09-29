@@ -16,7 +16,7 @@ function checkToken(req, res, next) {
 	next();
 }
 
-Router.get('/books', checkToken, (req, res, next) => {
+Router.get('/books', (req, res, next) => {
 	Book.find()
 		.select('-__v -_id')
 		.then((books) => {
