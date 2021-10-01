@@ -1,10 +1,9 @@
-POST https://adarsh.gq/library/books
+DELETE http://localhost:3000/library/books
 Content-Type: application/json
+token: superdoge1234
 
 {
-    "name": "Adarsh Chakraborty",
-    "book": "The Picture of Dorian Gray ",
-    "price": "$200"
+    "bookid": "6156e274d1fb851a0a8f016e"
 }
 
 ###
