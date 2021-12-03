@@ -1,23 +1,26 @@
 const express = require('express');
 const Router = express.Router();
 const Book = require('../Model/Book');
-const { ObjectID } = require('mongodb');
+const mongoose = require('mongoose');
 
 function checkToken(req, res, next) {
 	const token = req.headers['token'];
-	console.log(token);
 	if (!token) {
 		return res
-			.status(400)
-			.json({ error: 'Unauthorized request, Missing auth token', status: 400 });
+			.status(401)
+			.json({
+				result: 'error',
+				message: 'Unauthorized request, Missing auth token',
+				status: 401
+			});
 	}
 	if (token !== 'superdoge1234') {
-		return res.status(400).json({
-			error: 'Unauthorized request, auth token is not valid.',
-			status: 400
+		return res.status(401).json({
+			result: 'error',
+			message: 'Unauthorized request, auth token is not valid.',
+			status: 401
 		});
 	}
-	console.log(token);
 	next();
 }
 
@@ -33,12 +36,13 @@ Router.route('/books')
 	.all(checkToken)
 	.post((req, res) => {
 		const { name, book, author, price } = req.body;
-		console.log(req.body);
 		if (!name || !book || !author || !price) {
 			let msg = `Abe ${name ? '' : 'name,'}${book ? '' : 'book,'}${
 				author ? '' : 'author,'
 			}${price ? '' : 'price'} kon dega be?`;
-			return res.status(400).json({ error: msg, status: 400 });
+			return res
+				.status(400)
+				.json({ result: 'error', message: msg, status: 400 });
 		}
 
 		Book.create({
@@ -49,25 +53,28 @@ Router.route('/books')
 		}).then((doc) => {
 			res.json({
 				result: 'success',
-				...doc._doc
+				created_book: { ...doc._doc }
 			});
 		});
 	})
 	.put((req, res) => {
 		const { bookid, name, book, author, price } = req.body;
-		console.log(req.body);
 		if (!bookid) {
 			return res.status(400).json({
-				error: 'Please provide the ID of the book you want to update.',
+				result: 'error',
+				message: 'Please provide the ID of the book you want to update.',
 				status: 400
 			});
 		}
-		if (!ObjectID.isValid(bookid)) {
+
+		if (!mongoose.isValidObjectId(bookid)) {
 			return res.status(400).json({
-				error: 'Invalid bookid, Please provide a valid book id.',
+				result: 'error',
+				message: 'Invalid bookid',
 				status: 400
 			});
 		}
+
 		let updatedBook = {
 			name,
 			book,
@@ -78,17 +85,18 @@ Router.route('/books')
 		Book.findByIdAndUpdate(bookid, { $set: updatedBook }, { new: true })
 			.then((doc) => {
 				if (!doc) {
-					return res
-						.status(400)
-						.json({ error: 'No book exists with that ID.', status: 400 });
+					return res.status(400).json({
+						result: 'error',
+						message: 'No book exists with that ID.',
+						status: 400
+					});
 				}
-				return res.json({ result: 'success', updatedBook: doc });
+				return res.json({ result: 'success', updated_book: doc });
 			})
 			.catch((err) => {
-				console.log(err);
 				return res.status(500).json({
-					error:
-						'Something went wrong, We are working on it. Try again in some time.',
+					result: 'error',
+					message: 'Internal server error, try again later...',
 					status: 500
 				});
 			});
@@ -97,36 +105,37 @@ Router.route('/books')
 		const { bookid } = req.body;
 		if (!bookid) {
 			return res.status(400).json({
-				error: 'Please provide the ID of the book you want to delete.',
+				result: 'error',
+				message: 'Please provide the ID of the book you want to delete.',
 				status: 400
 			});
 		}
-		if (!ObjectID.isValid(bookid)) {
+		if (!mongoose.isValidObjectId(bookid)) {
 			return res.status(400).json({
-				error: 'Invalid bookid, Please provide a valid book id.',
+				result: 'error',
+				message: 'Invalid bookid',
 				status: 400
 			});
 		}
+
 		Book.findByIdAndDelete(bookid)
 			.then((doc) => {
 				if (!doc) {
-					return res
-						.status(400)
-						.json({ error: 'No book exists with that ID.', status: 400 });
+					return res.status(400).json({
+						result: 'error',
+						message: 'No book exists with that ID.',
+						status: 400
+					});
 				}
-				return res.json({ result: 'success', ...doc._doc });
+				return res.json({ result: 'success', deleted_book: { ...doc._doc } });
 			})
 			.catch((err) => {
-				console.log(err);
 				return res.status(500).json({
-					error:
-						'Something went wrong, We are working on it. Try again in some time.',
+					result: 'error',
+					message: 'Internal server error, try again later...',
 					status: 500
 				});
 			});
 	});
-
-	
-
 
 module.exports = Router;
