@@ -6,13 +6,11 @@ const mongoose = require('mongoose');
 function checkToken(req, res, next) {
 	const token = req.headers['token'];
 	if (!token) {
-		return res
-			.status(401)
-			.json({
-				result: 'error',
-				message: 'Unauthorized request, Missing auth token',
-				status: 401
-			});
+		return res.status(401).json({
+			result: 'error',
+			message: 'Unauthorized request, Missing auth token',
+			status: 401
+		});
 	}
 	if (token !== 'superdoge1234') {
 		return res.status(401).json({
@@ -137,5 +135,9 @@ Router.route('/books')
 				});
 			});
 	});
+
+Router.get('/', (req, res, next) => {
+	res.status(200).json({ status: 200, message: 'OK' });
+});
 
 module.exports = Router;
