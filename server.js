@@ -26,7 +26,11 @@ app.use((req, res, next) => {
 	});
 });
 
-mongoose.connect(process.env.MONGODB_URI, () => {
+mongoose.connect(process.env.MONGODB_URI, (err) => {
+	if (err) {
+		console.log('Error connecting to mongodb: ', err);
+		return;
+	}
 	console.log('Connected to mongodb (Hopefully), starting server...');
 	app.listen(PORT, () => {
 		console.log('listening on port: ' + PORT);
