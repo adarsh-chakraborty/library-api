@@ -91,7 +91,7 @@ token: superdoge1234
 
 **PUT** `/books`
 
-> Accepts a PUT request to update a book, Needs the ID of the book you want to update. `bookid`
+> Accepts a PUT request to update a book, Needs the ID of the book you want to update. `_id`
 
 **Required Headers:**
 
@@ -104,12 +104,12 @@ token:  superdoge1234
 
 ```javascript
 {
-	"bookid":  "idOFTheBOOKY0UWAnTtoEDIT",
+	"_id":  "idOFTheBOOKY0UWAnTtoEDIT",
 	"name": "Rimuru Tempest"
 }
 ```
 
-**Please note: The field `bookid` is required \*, You can exclude all the other fields that you don't want to update.**
+**Please note: The field `_id` is required \*, You can exclude all the other fields that you don't want to update.**
 
 **Response:** Response will return the updated book with result success.
 
@@ -133,7 +133,7 @@ token:  superdoge1234
 
 **DELETE** `/books`
 
-> Accepts a DELETE request to delete a book, Needs the `bookid` you want to delete.
+> Accepts a DELETE request to delete a book, Needs the `_id` you want to delete.
 
 **Required Headers:**
 
@@ -146,11 +146,11 @@ token:  superdoge1234
 
 ```javascript
 {
-	"bookid":  "idOFTheBOOKY0UWAnTtoDEL"
+	"_id":  "idOFTheBOOKY0UWAnTtoDEL"
 }
 ```
 
-\*_Please note: The field `bookid` is absolutely required._
+\*_Please note: The field `_id` is absolutely required._
 
 **Response:** Response will return the deleted book with the result success.
 

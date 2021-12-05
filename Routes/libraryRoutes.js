@@ -51,12 +51,13 @@ Router.route('/books')
 		}).then((doc) => {
 			res.json({
 				result: 'success',
+				message: 'Book created!',
 				created_book: { ...doc._doc }
 			});
 		});
 	})
 	.put((req, res) => {
-		const { bookid, name, book, author, price } = req.body;
+		const { _id: bookid, name, book, author, price } = req.body;
 		if (!bookid) {
 			return res.status(400).json({
 				result: 'error',
@@ -89,7 +90,11 @@ Router.route('/books')
 						status: 400
 					});
 				}
-				return res.json({ result: 'success', updated_book: doc });
+				return res.json({
+					result: 'success',
+					message: 'Book updated!',
+					updated_book: doc
+				});
 			})
 			.catch((err) => {
 				return res.status(500).json({
@@ -100,7 +105,7 @@ Router.route('/books')
 			});
 	})
 	.delete((req, res) => {
-		const { bookid } = req.body;
+		const { _id: bookid } = req.body;
 		if (!bookid) {
 			return res.status(400).json({
 				result: 'error',
@@ -125,7 +130,11 @@ Router.route('/books')
 						status: 400
 					});
 				}
-				return res.json({ result: 'success', deleted_book: { ...doc._doc } });
+				return res.json({
+					result: 'success',
+					message: 'Book deleted!',
+					deleted_book: { ...doc._doc }
+				});
 			})
 			.catch((err) => {
 				return res.status(500).json({
