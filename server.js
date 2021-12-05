@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/library', libraryRoutes);
 
 app.get('/', (req, res, next) => {
-	res.status(200).json({ status: 200, message: 'OK' });
+	res.redirect('/library');
 });
 
 app.use((req, res, next) => {
@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 		console.log('Error connecting to mongodb: ', err);
 		return;
 	}
-	console.log('Connected to mongodb (Hopefully), starting server...');
+	console.log('Connected to mongodb (Hopefully), starting server..');
 	app.listen(PORT, () => {
 		console.log('listening on port: ' + PORT);
 	});

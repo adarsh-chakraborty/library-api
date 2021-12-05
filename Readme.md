@@ -15,8 +15,9 @@ A Simple API to perform CRUD operations on a web based library app.
 ## Documentation
 
 **API available at**
+Base URL:
 
-> http://adarsh.gq/library
+> https://bookshelf.gq/library
 
 ## Endpoints
 
