@@ -22,6 +22,10 @@ function checkToken(req, res, next) {
 	next();
 }
 
+Router.get('/', (req, res, next) => {
+	res.status(200).json({ status: 200, message: 'OK' });
+});
+
 Router.route('/books')
 
 	.get((req, res) => {
@@ -145,8 +149,21 @@ Router.route('/books')
 			});
 	});
 
-Router.get('/', (req, res, next) => {
-	res.status(200).json({ status: 200, message: 'OK' });
+Router.get('/books/:bookid', (req, res, next) => {
+	const { bookid } = req.params;
+	if (!mongoose.isValidObjectId(bookid)) {
+		return res.status(400).json({ error: 'Invalid book id', status: 400 });
+	}
+	Book.findById(bookid)
+		.select('-__v')
+		.then((docs) => {
+			if (!docs) {
+				return res
+					.status(404)
+					.json({ error: 'No book exists with that ID', status: 404 });
+			}
+			res.json(docs);
+		});
 });
 
 module.exports = Router;

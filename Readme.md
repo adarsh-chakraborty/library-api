@@ -2,11 +2,11 @@
 
 A Simple API to perform CRUD operations on a web based library app.
 
-**New Features** (_v0.1_)
+**New Features** (_v2.0_)
 
 - Added Authorization `token` in request header for POST request.
 - Changed all responses to JSON.
-- Nerfed all the unimportant variables from GET request. (`{__v:}`).
+- Nerfed all the unimportant variables from GET request. (`{__v}`).
 - Added more bugs to fix later.
 - Added a 404 response.
 
@@ -17,30 +17,30 @@ A Simple API to perform CRUD operations on a web based library app.
 **API available at**
 Base URL:
 
-> https://bookshelf.gq/library
+> https://bookshelf.gq/api
 
 ## Endpoints
 
 **GET** `/books`
 
-> Fetches all the records of books from library.
+> Fetches all the records of books from the api.
 
 **Response:**
 
 ```javascript
 [
-	{
-		name: 'Adarsn Chakraborty',
-		book: 'The Moonstone',
-		author: 'Wilkie Collins (1868)',
-		price: '$200'
-	},
-	{
-		name: 'Adarsh Chakraborty',
-		book: 'The Way We Live Now',
-		author: 'Anthony Trollope (1875)',
-		price: '$200'
-	}
+  {
+    name: 'Adarsn Chakraborty',
+    book: 'The Moonstone',
+    author: 'Wilkie Collins (1868)',
+    price: '$200'
+  },
+  {
+    name: 'Adarsh Chakraborty',
+    book: 'The Way We Live Now',
+    author: 'Anthony Trollope (1875)',
+    price: '$200'
+  }
 ];
 ```
 
@@ -68,7 +68,7 @@ token: superdoge1234
 }
 ```
 
-**Please note: all the fields `name,book,author,price` are required \*, else you will receive a 400 error.**
+**Please note: all the fields `name,book,author,price` are absolutely required\*, else you will receive a 400 error.**
 
 **Response:** Response will return the newly added object with the result success.
 
@@ -105,8 +105,8 @@ token:  superdoge1234
 
 ```javascript
 {
-	"_id":  "idOFTheBOOKY0UWAnTtoEDIT",
-	"name": "Rimuru Tempest"
+    "_id":  "idOFTheBOOKY0UWAnTtoEDIT",
+    "name": "Rimuru Tempest"
 }
 ```
 
@@ -147,7 +147,7 @@ token:  superdoge1234
 
 ```javascript
 {
-	"_id":  "idOFTheBOOKY0UWAnTtoDEL"
+    "_id":  "idOFTheBOOKY0UWAnTtoDEL"
 }
 ```
 
@@ -168,5 +168,31 @@ token:  superdoge1234
         "updatedAt": "2021-12-03T10:33:33.345Z",
         "__v": 0
     }
+}
+```
+
+---
+
+### View a single book in detail
+
+Get detail of a single book by bookid on a GET request.
+
+**GET** `/books/:bookid`
+
+> Accepts a GET request where `:bookid` is the `_id` of the book.
+
+**Example**
+
+> /books/61431abac7b21d45aabf2ff9
+
+**Response:**
+
+```javascript
+{
+    "_id": "61431abac7b21d45aabf2ff9",
+    "name": "Adarsn Chakraborty",
+    "book": "The Moonstone",
+    "author": "Wilkie Collins (1868)",
+    "price": "$200"
 }
 ```

@@ -13,10 +13,10 @@ app.set('json spaces', 4);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/library', libraryRoutes);
+app.use('/api', libraryRoutes);
 
 app.get('/', (req, res, next) => {
-	res.redirect('/library');
+	res.redirect('/api');
 });
 
 app.use((req, res, next) => {
