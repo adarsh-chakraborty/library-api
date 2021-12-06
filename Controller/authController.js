@@ -10,6 +10,7 @@ exports.checkToken = (req, res, next) => {
       status: 401
     });
   }
+
   if (token !== 'superdoge1234') {
     return res.status(401).json({
       result: 'error',
@@ -52,11 +53,14 @@ exports.postRegister = async (req, res, next) => {
   }
 
   // Check if username exists
-  const docs = await User.findOne({ username: username.toLowerCase() });
+  const docs = await User.findOne({
+    $or: [{ username: username.toLowerCase() }, { email: email.toLowerCase() }]
+  });
+
   if (docs) {
     return res.status(400).json({
       result: 'error',
-      message: 'This username is already registered!'
+      message: 'This username/Email already in use!!'
     });
   }
 
@@ -69,7 +73,9 @@ exports.postRegister = async (req, res, next) => {
   }
 
   console.log(password, typeof password);
-  const hashedPassword = await bcrypt.hash(password, 12);
+
+  // const salt = bcrypt.genSaltSync(12);
+  const hashedPassword = bcrypt.hashSync(password, 12);
 
   const doc = await User.create({ email, username, password: hashedPassword });
   res.json({ result: 'success', status: 200, user_created: doc });
@@ -85,7 +91,7 @@ exports.postLogin = async (req, res, next) => {
     });
   }
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).select('+password');
   if (!user) {
     return res.status(400).json({
       result: 'error',
