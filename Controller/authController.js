@@ -1,5 +1,5 @@
 const User = require('../Model/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 exports.checkToken = (req, res, next) => {
   const token = req.headers['token'];
@@ -60,7 +60,16 @@ exports.postRegister = async (req, res, next) => {
     });
   }
 
-  const hashedPassword = bcrypt.hashSync(password, 12);
+  const usr = await User.findOne({ email: email.toLowerCase() });
+  if (usr) {
+    return res.status(400).json({
+      result: 'error',
+      message: 'This email is already registered!'
+    });
+  }
+
+  console.log(password, typeof password);
+  const hashedPassword = await bcrypt.hash(password, 12);
 
   const doc = await User.create({ email, username, password: hashedPassword });
   res.json({ result: 'success', status: 200, user_created: doc });
@@ -85,10 +94,11 @@ exports.postLogin = async (req, res, next) => {
   }
 
   // DEBUG
-  console.log('Comparing', password, user.password);
-  console.log(bcrypt.compareSync(password, user.password));
+  console.log('Comparing', typeof password, password, user.password);
 
-  if (bcrypt.compareSync(password, user.password)) {
+  const doMatch = bcrypt.compareSync(password, user.password);
+  console.log(doMatch);
+  if (doMatch) {
     return res.json({
       result: 'OK',
       message: 'You are now logged in!',
