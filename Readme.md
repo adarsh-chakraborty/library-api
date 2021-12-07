@@ -196,3 +196,96 @@ Get detail of a single book by bookid on a GET request.
     "price": "$200"
 }
 ```
+
+---
+
+# User Accounts & Authentication
+
+**API available at**
+Base URL:
+
+> https://bookshelf.gq/auth
+
+## Endpoints
+
+**POST** `/register`
+
+> Register a new user account.
+
+**Required Headers:**
+
+```
+Content-Type: application/json
+token: superdoge1234
+```
+
+**Required Body (JSON):**
+
+```javascript
+{
+    "email": "adarshc@goocle.com",
+    "username": "duck",
+    "password": "superduck1234"
+}
+```
+
+| Field Name | Validation                    | Type   |
+| ---------- | ----------------------------- | ------ |
+| `email`    | Must be a valid email format  | String |
+| `username` | Must be unique                | String |
+| `password` | Must be atleast 6 chars long. | String |
+
+**Response:**
+
+```javascript
+{
+  "result": "success",
+  "status": 200,
+  "user_created": {
+    "email": "adarshc@goocle.com",
+    "username": "duck",
+    "_id": "61aef180a2eb8fbc9896350e",
+    "createdAt": "2021-12-07T05:30:40.857Z",
+    "updatedAt": "2021-12-07T05:30:40.857Z",
+    "__v": 0
+  }
+}
+```
+
+---
+
+**POST** `/login`
+
+> Verifies credentials and generates an auth token.
+
+**Required Headers:**
+
+```
+Content-Type: application/json
+token: superdoge1234
+```
+
+**Required Body (JSON):**
+
+```javascript
+{
+    "email": "adarshc@goocle.com",
+    "password": "superduck1234"
+}
+```
+
+**Response:**
+
+```javascript
+{
+  "result": "OK",
+  "message": "You are now logged in!",
+  "token": "superdoge1234"
+}
+```
+
+---
+
+**POST** `/reset`
+
+> Sends a password reset e-mail. (To be implemented)
