@@ -4,7 +4,11 @@ A Simple API to perform CRUD operations on a web based library app.
 
 **New Features** (_v2.1_)
 
-- Added Pagination. `page` and `size{max:25}`
+- Added Pagination.
+- `Get` request on `/books` can receive two query parameters. `page` and `size{max:25}`
+- Get request on `/books` no longer returns an array of books, Instead it returns an object now.
+- You can get the array of books in the `books` property of response object.
+- Response object contains additional data like current,next,last pages, look at the response object for all the details.
 - Refactored code, It's more modular now.
 - Global Error handling added.
 - Added more bugs to fix later.
@@ -54,7 +58,13 @@ Base URL:
 
 ```javascript
 {
-  "page": "1",
+  "totalBooks": 10,
+  "page": 1,
+  "hasNextPage": true,
+  "hasPrevPage": false,
+  "nextPage": 2,
+  "prevPage": 0,
+  "lastPage": 2,
   "size": 5,
   "books": [
     {
@@ -95,6 +105,20 @@ Base URL:
   ]
 }
 ```
+
+#### Let's see what data we received in response object:
+
+| Property      | Description                                | Type    |
+| ------------- | ------------------------------------------ | ------- |
+| `totalBooks`  | Total count of books in database.          | Number  |
+| `page`        | Current Page Value                         | Number  |
+| `hasNextPage` | Do we have a next page?                    | Boolean |
+| `hasPrevPage` | Do we have a previous page?                | Boolean |
+| `nextPage`    | Next Page value                            | Number  |
+| `prevPage`    | Previous Page value                        | Number  |
+| `lastPage`    | Last possible page value                   | Number  |
+| `size`        | Current size of the query                  | Number  |
+| `books`       | Contains the list of books in current page | Array   |
 
 ---
 

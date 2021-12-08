@@ -7,22 +7,40 @@ const OK = (req, res, next) => {
 };
 
 const GetAllBooks = async (req, res, next) => {
-  let { page = 1, size = 5 } = req.query;
+  try {
+    let { page = 1, size = 5 } = +req.query;
 
-  if (page <= 0 || size <= 0) {
-    // next(new AppError('Invalid query parameters', 'QueryException', 400));
-    throw new AppError('Invalid query parameters', 'QueryException', 400);
+    if (page <= 0 || size <= 0) {
+      // next(new AppError('Invalid query parameters', 'QueryException', 400));
+      throw new AppError('Invalid query parameters', 'QueryException', 400);
+    }
+
+    if (size > 10) {
+      size = 25;
+    }
+
+    const limit = parseInt(size);
+    const skip = (page - 1) * size;
+
+    const countBooks = Book.countDocuments();
+    const books = Book.find().limit(limit).skip(skip).select('-__v');
+
+    const [totalBooks, result] = await Promise.all([countBooks, books]);
+
+    res.json({
+      totalBooks,
+      page,
+      hasNextPage: size * page < totalBooks,
+      hasPrevPage: page > 1,
+      nextPage: page + 1,
+      prevPage: page - 1,
+      lastPage: Math.ceil(totalBooks / size),
+      size,
+      books: result
+    });
+  } catch (err) {
+    throw new AppError(err.message, 'InternalError', 500);
   }
-
-  if (size > 10) {
-    size = 25;
-  }
-
-  const limit = parseInt(size);
-  const skip = (page - 1) * size;
-
-  const books = await Book.find().limit(limit).skip(skip).select('-__v');
-  res.json({ page, size, books });
 };
 
 const postBook = (req, res) => {
