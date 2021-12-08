@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 const libraryRoutes = require('./Routes/libraryRoutes');
 const authRoutes = require('./Routes/authRoutes');
+const errorController = require('./Controller/errorController');
 
 app.set('json spaces', 4);
 app.use(cors());
@@ -21,12 +22,14 @@ app.get('/', (req, res, next) => {
   res.redirect('/api');
 });
 
-app.use((req, res, next) => {
+app.use('*', (req, res, next) => {
   res.status(404).json({
     status: 404,
     message: 'Resource not found'
   });
 });
+
+app.use(errorController);
 
 mongoose.connect(process.env.MONGODB_URI, (err) => {
   if (err) {
