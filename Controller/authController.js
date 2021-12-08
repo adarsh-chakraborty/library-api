@@ -3,31 +3,11 @@ const { AppError } = require('../lib/Error');
 const User = require('../Model/User');
 const bcrypt = require('bcryptjs');
 
-exports.checkToken = (req, res, next) => {
-  const token = req.headers['token'];
-  if (!token) {
-    throw new AppError(
-      'Unauthorized request, Auth token required.',
-      'AuthorizationError',
-      401
-    );
-  }
-
-  if (token !== 'superdoge1234') {
-    throw new AppError(
-      'Unautorized request, Invalid token',
-      'AuthorizationError',
-      401
-    );
-  }
-  next();
-};
-
-exports.getAuth = (req, res, next) => {
+const getAuth = (req, res, next) => {
   res.status(200).json({ message: 'OK', status: 200 });
 };
 
-exports.postRegister = async (req, res, next) => {
+const postRegister = async (req, res, next) => {
   const { email, username, password } = req.body;
 
   if (!email || !username || !password) {
@@ -67,7 +47,7 @@ exports.postRegister = async (req, res, next) => {
   res.json({ result: 'success', status: 201, user_created: doc });
 };
 
-exports.postLogin = async (req, res, next) => {
+const postLogin = async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -98,7 +78,7 @@ exports.postLogin = async (req, res, next) => {
   throw new AppError('Wrong Username or password', 'AuthorizationError', 401);
 };
 
-exports.postReset = (req, res, next) => {
+const postReset = (req, res, next) => {
   // to be implemented
 };
 
@@ -107,3 +87,5 @@ function isValidEmail(email) {
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return emailPattern.test(email);
 }
+
+module.exports = { getAuth, postRegister, postLogin, postReset };
