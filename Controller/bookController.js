@@ -6,8 +6,13 @@ const OK = (req, res, next) => {
   res.status(200).json({ status: 200, message: 'OK' });
 };
 
-const GetAllBooks = async (req, res) => {
+const GetAllBooks = async (req, res, next) => {
   let { page = 1, size = 5 } = req.query;
+
+  if (page < 0 || size < 0) {
+    // next(new AppError('Invalid query parameters', 'QueryException', 400));
+    throw new AppError('Invalid query parameters', 'QueryException', 400);
+  }
 
   if (size > 10) {
     size = 25;

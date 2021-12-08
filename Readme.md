@@ -2,6 +2,13 @@
 
 A Simple API to perform CRUD operations on a web based library app.
 
+**New Features** (_v2.1_)
+
+- Added Pagination. `page` and `size{max:25}`
+- Refactored code, It's more modular now.
+- Global Error handling added.
+- Added more bugs to fix later.
+
 **New Features** (_v2.0_)
 
 - Added Authorization `token` in request header for POST request.
@@ -14,7 +21,7 @@ A Simple API to perform CRUD operations on a web based library app.
 
 ## Documentation
 
-**API available at**
+**Books API available at**
 Base URL:
 
 > https://bookshelf.gq/api
@@ -22,6 +29,13 @@ Base URL:
 ## Endpoints
 
 **GET** `/books`
+
+**Query Parameters:**
+
+| query        | default value | type         |
+| ------------ | ------------- | ------------ |
+| Content Cell | Content Cell  | Content Cell |
+| Content Cell | Content Cell  | Content Cell |
 
 > Fetches all the records of books from the api.
 

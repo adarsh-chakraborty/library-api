@@ -1,6 +1,6 @@
 {
-  "name": "shreylawang",
-  "version": "1.0.0",
+  "name": "bookshelf_api",
+  "version": "2.1.0",
   "description": "",
   "main": "server.js",
   "scripts": {

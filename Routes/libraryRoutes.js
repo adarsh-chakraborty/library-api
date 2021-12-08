@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router();
 const verifyToken = require('../lib/verifyToken');
+const catchASync = require('../utils/catchAsync');
 
 const {
   OK,
@@ -14,12 +15,12 @@ const {
 Router.get('/', OK);
 
 Router.route('/books')
-  .get(GetAllBooks)
-  .all(verifyToken)
-  .post(postBook)
-  .put(putUpdateBook)
-  .delete(deleteBook);
+  .get(catchASync(GetAllBooks))
+  .all(catchASync(verifyToken))
+  .post(catchASync(postBook))
+  .put(catchASync(putUpdateBook))
+  .delete(catchASync(deleteBook));
 
-Router.get('/books/:bookid', verifyToken, getBookDetails);
+Router.get('/books/:bookid', verifyToken, catchASync(getBookDetails));
 
 module.exports = Router;

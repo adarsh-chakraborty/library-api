@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router();
 const verifyToken = require('../lib/verifyToken');
+const catchAsync = require('../utils/catchAsync');
 
 const {
   getAuth,
@@ -9,9 +10,9 @@ const {
   postReset
 } = require('../Controller/authController');
 
-Router.route('/').all(verifyToken).get(getAuth);
-Router.route('/register').all(verifyToken).post(postRegister);
-Router.route('/login').all(verifyToken).post(postLogin);
-Router.route('/reset').all(verifyToken).post(postReset);
+Router.route('/').all(verifyToken).get(catchAsync(getAuth));
+Router.route('/register').all(verifyToken).post(catchAsync(postRegister));
+Router.route('/login').all(verifyToken).post(catchAsync(postLogin));
+Router.route('/reset').all(verifyToken).post(catchAsync(postReset));
 
 module.exports = Router;
