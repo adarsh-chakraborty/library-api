@@ -30,32 +30,70 @@ Base URL:
 
 **GET** `/books`
 
+> Fetches records of books from the api.
+
 **Query Parameters:**
 
-| query        | default value | type         |
-| ------------ | ------------- | ------------ |
-| Content Cell | Content Cell  | Content Cell |
-| Content Cell | Content Cell  | Content Cell |
+| query  | default value | max value | type   |
+| ------ | ------------- | --------- | ------ |
+| `page` | 1             | \*        | Number |
+| `size` | 5             | 25        | Number |
 
-> Fetches all the records of books from the api.
+- If you don't pass a page number, It defaults to `1`.
+- If you don't pass size, It defaults to `5`. Maximum is `25`.
+
+**Example Request:**
+
+> https://bookshelf.gq/api/books
+
+> https://bookshelf.gq/api/books?page=1
+
+> https://bookshelf.gq/api/books?page=1&size=5
 
 **Response:**
 
 ```javascript
-[
-  {
-    name: 'Adarsn Chakraborty',
-    book: 'The Moonstone',
-    author: 'Wilkie Collins (1868)',
-    price: '$200'
-  },
-  {
-    name: 'Adarsh Chakraborty',
-    book: 'The Way We Live Now',
-    author: 'Anthony Trollope (1875)',
-    price: '$200'
-  }
-];
+{
+  "page": "1",
+  "size": 5,
+  "books": [
+    {
+      "_id": "61431abac7b21d45aabf2ff9",
+      "name": "Adarsn Chakraborty",
+      "book": "The Moonstone",
+      "author": "Wilkie Collins (1868)",
+      "price": "$200"
+    },
+    {
+      "_id": "61431ae5c7b21d45aabf2ffb",
+      "name": "Adarsh Chakraborty",
+      "book": "The Way We Live Now",
+      "author": "Anthony Trollope (1875)",
+      "price": "$200"
+    },
+    {
+      "_id": "61431af6c7b21d45aabf2ffd",
+      "name": "Adarsh Chakraborty",
+      "book": "Kidnapped",
+      "author": "Robert Louis Stevenson (1886)",
+      "price": "$200"
+    },
+    {
+      "_id": "61431b06c7b21d45aabf2fff",
+      "name": "Adarsh Chakraborty",
+      "book": "Three Men in a Boat",
+      "author": "Jerome K Jerome (1889)",
+      "price": "$200"
+    },
+    {
+      "_id": "61431b1cc7b21d45aabf3001",
+      "name": "Adarsh Chakraborty",
+      "book": "The Picture of Dorian Gray ",
+      "author": "Oscar Wilde (1891)",
+      "price": "$200"
+    }
+  ]
+}
 ```
 
 ---

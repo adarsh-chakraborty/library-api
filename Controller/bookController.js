@@ -9,7 +9,7 @@ const OK = (req, res, next) => {
 const GetAllBooks = async (req, res, next) => {
   let { page = 1, size = 5 } = req.query;
 
-  if (page < 0 || size < 0) {
+  if (page <= 0 || size <= 0) {
     // next(new AppError('Invalid query parameters', 'QueryException', 400));
     throw new AppError('Invalid query parameters', 'QueryException', 400);
   }
