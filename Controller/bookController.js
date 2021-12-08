@@ -6,12 +6,18 @@ const OK = (req, res, next) => {
   res.status(200).json({ status: 200, message: 'OK' });
 };
 
-const GetAllBooks = (req, res) => {
-  Book.find()
-    .select('-__v')
-    .then((books) => {
-      res.json(books);
-    });
+const GetAllBooks = async (req, res) => {
+  let { page = 1, size = 5 } = req.query;
+
+  if (size > 10) {
+    size = 25;
+  }
+
+  const limit = parseInt(size);
+  const skip = (page - 1) * size;
+
+  const books = await Book.find().limit(limit).skip(skip).select('-__v');
+  res.json({ page, size, books });
 };
 
 const postBook = (req, res) => {
