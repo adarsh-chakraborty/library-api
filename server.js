@@ -14,7 +14,7 @@ const errorController = require('./Controller/errorController');
 app.set('json spaces', 4);
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use('/api', libraryRoutes);
 app.use('/auth', authRoutes);
 

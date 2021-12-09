@@ -91,7 +91,7 @@ const putUpdateBook = (req, res) => {
       if (!doc) {
         throw new AppError('No book found with that ID', 'BookNotFound', 404);
       }
-      return res.status(201).json({
+      return res.status(202).json({
         result: 'success',
         message: 'Book updated!',
         updated_book: doc
@@ -120,7 +120,7 @@ const deleteBook = (req, res) => {
       if (!doc) {
         throw new AppError('No book found with that ID', 'BookNotFound', 404);
       }
-      return res.status(201).json({
+      return res.status(202).json({
         result: 'success',
         message: 'Book deleted!',
         deleted_book: { ...doc._doc }

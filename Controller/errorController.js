@@ -7,6 +7,10 @@ const errorController = (err, req, res, next) => {
       .json({ message: err.message, type: err.name });
   }
 
+  if (err instanceof SyntaxError) {
+    return res.status(400).json({ message: err.message, type: 'SyntaxError' });
+  }
+
   return res.status(500).json({ message: 'Internal server error!' });
 };
 
