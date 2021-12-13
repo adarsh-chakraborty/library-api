@@ -11,6 +11,7 @@ A Simple API to perform CRUD operations on a web based library app.
 - Response object contains additional data like current,next,last pages, look at the response object for all the details.
 - Refactored code, It's more modular now.
 - Global Error handling added.
+- Changed `price` type to `Number`.
 - Added more bugs to fix later.
 
 **New Features** (_v2.0_)
@@ -30,9 +31,9 @@ Base URL:
 
 > https://bookshelf.gq/api
 
-## Endpoints
+## ENDPOINTS
 
-**GET** `/books`
+### **GET** `/books`
 
 > Fetches records of books from the api.
 
@@ -72,35 +73,35 @@ Base URL:
       "name": "Adarsn Chakraborty",
       "book": "The Moonstone",
       "author": "Wilkie Collins (1868)",
-      "price": "$200"
+      "price": 200
     },
     {
       "_id": "61431ae5c7b21d45aabf2ffb",
       "name": "Adarsh Chakraborty",
       "book": "The Way We Live Now",
       "author": "Anthony Trollope (1875)",
-      "price": "$200"
+       price": 200
     },
     {
       "_id": "61431af6c7b21d45aabf2ffd",
       "name": "Adarsh Chakraborty",
       "book": "Kidnapped",
       "author": "Robert Louis Stevenson (1886)",
-      "price": "$200"
+       price": 200
     },
     {
       "_id": "61431b06c7b21d45aabf2fff",
       "name": "Adarsh Chakraborty",
       "book": "Three Men in a Boat",
       "author": "Jerome K Jerome (1889)",
-      "price": "$200"
+       price": 200
     },
     {
       "_id": "61431b1cc7b21d45aabf3001",
       "name": "Adarsh Chakraborty",
       "book": "The Picture of Dorian Gray ",
       "author": "Oscar Wilde (1891)",
-      "price": "$200"
+       price": 200
     }
   ]
 }
@@ -120,9 +121,19 @@ Base URL:
 | `size`        | Current size of the query                  | Number  |
 | `books`       | Contains the list of books in current page | Array   |
 
+#### `books` contains an array of books with the following Schema.
+
+| Property | Description                      | Type   |
+| -------- | -------------------------------- | ------ |
+| `_id`    | Id of the book                   | String |
+| `name`   | Name of the user added this book | String |
+| `book`   | Title of the book                | String |
+| `author` | Name of the author               | String |
+| `price`  | Price of the book                | Number |
+
 ---
 
-**POST** `/books`
+### **POST** `/books`
 
 > Accepts a POST request to add a new book to the database.
 
@@ -140,7 +151,7 @@ token: superdoge1234
     "name": "Adarsh Chakraborty",
     "book": "The Picture of Dorian Gray ",
     "author": "The Picture of Dorian Gray ",
-    "price": "$200"
+    "price": 200
 }
 ```
 
@@ -155,7 +166,7 @@ token: superdoge1234
         "name": "Adarsh Chakraborty",
         "book": "The Picture of Dorian Gray",
         "author": "The Picture of Dorian Gray",
-        "price": "$200",
+        "price": 200,
         "_id": "61a9f2090793e2749117fba5",
         "createdAt": "2021-12-03T10:31:37.712Z",
         "updatedAt": "2021-12-03T10:31:37.712Z",
@@ -166,7 +177,7 @@ token: superdoge1234
 
 ---
 
-**PUT** `/books`
+### **PUT** `/books`
 
 > Accepts a PUT request to update a book, Needs the ID of the book you want to update. `_id`
 
@@ -198,7 +209,7 @@ token:  superdoge1234
         "name": "Rimuru Tempest",
         "book": "TEST BOOK ",
         "author": "The Picture of Dorian Gray ",
-        "price": "$400",
+        "price": 400,
         "createdAt": "2021-12-03T10:18:31.343Z",
         "updatedAt": "2021-12-03T10:33:33.345Z",
         "__v": 0
@@ -208,7 +219,7 @@ token:  superdoge1234
 
 ---
 
-**DELETE** `/books`
+### **DELETE** `/books`
 
 > Accepts a DELETE request to delete a book, Needs the `_id` you want to delete.
 
@@ -239,7 +250,7 @@ token:  superdoge1234
         "name": "Rimuru Tempest",
         "book": "TEST BOOK ",
         "author": "The Picture of Dorian Gray ",
-        "price": "$400",
+        "price": 400,
         "createdAt": "2021-12-03T10:18:31.343Z",
         "updatedAt": "2021-12-03T10:33:33.345Z",
         "__v": 0
@@ -253,7 +264,7 @@ token:  superdoge1234
 
 Get detail of a single book by bookid on a GET request.
 
-**GET** `/books/:bookid`
+### **GET** `/books/:bookid`
 
 > Accepts a GET request where `:bookid` is the `_id` of the book.
 
@@ -269,7 +280,7 @@ Get detail of a single book by bookid on a GET request.
     "name": "Adarsn Chakraborty",
     "book": "The Moonstone",
     "author": "Wilkie Collins (1868)",
-    "price": "$200"
+    "price": 200
 }
 ```
 
@@ -284,7 +295,7 @@ Base URL:
 
 ## Endpoints
 
-**POST** `/register`
+### **POST** `/register`
 
 > Register a new user account.
 
@@ -330,7 +341,7 @@ token: superdoge1234
 
 ---
 
-**POST** `/login`
+### **POST** `/login`
 
 > Verifies credentials and generates an auth token.
 
@@ -362,6 +373,6 @@ token: superdoge1234
 
 ---
 
-**POST** `/reset`
+### **POST** `/reset`
 
 > Sends a password reset e-mail. (To be implemented)

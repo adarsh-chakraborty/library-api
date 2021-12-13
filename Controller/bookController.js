@@ -51,6 +51,14 @@ const postBook = (req, res) => {
     throw new AppError(msg, 'MissingFieldsError', 422);
   }
 
+  if (isNaN(price)) {
+    throw new AppError(
+      'price must be a valid integer!',
+      'ValidationError',
+      422
+    );
+  }
+
   Book.create({
     name,
     book,
@@ -77,6 +85,14 @@ const putUpdateBook = (req, res) => {
 
   if (!mongoose.isValidObjectId(bookid)) {
     throw new AppError('Invalid Book Id', 'ValidationError', 422);
+  }
+
+  if (price && isNaN(price)) {
+    throw new AppError(
+      'price must be a valid integer!',
+      'ValidationError',
+      422
+    );
   }
 
   let updatedBook = {
