@@ -8,7 +8,7 @@ const OK = (req, res, next) => {
 
 const GetAllBooks = async (req, res, next) => {
   try {
-    let { page = 1, size = 5 } = req.query;
+    let { page = 1, size = 4 } = req.query;
     page = parseInt(page);
     if (page <= 0 || size <= 0) {
       // next(new AppError('Invalid query parameters', 'QueryException', 400));

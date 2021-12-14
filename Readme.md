@@ -42,10 +42,10 @@ Base URL:
 | query  | default value | max value | type   |
 | ------ | ------------- | --------- | ------ |
 | `page` | 1             | \*        | Number |
-| `size` | 5             | 25        | Number |
+| `size` | 4             | 25        | Number |
 
 - If you don't pass a page number, It defaults to `1`.
-- If you don't pass size, It defaults to `5`. Maximum is `25`.
+- If you don't pass size, It defaults to `4`. Maximum is `25`.
 
 **Example Request:**
 
