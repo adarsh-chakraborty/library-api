@@ -15,8 +15,8 @@ const GetAllBooks = async (req, res, next) => {
       throw new AppError('Invalid query parameters', 'QueryException', 400);
     }
 
-    if (size > 25) {
-      size = 25;
+    if (size > 30) {
+      size = 30;
     }
     const limit = parseInt(size);
     const skip = (page - 1) * size;

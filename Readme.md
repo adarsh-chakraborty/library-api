@@ -5,7 +5,7 @@ A Simple API to perform CRUD operations on a web based library app.
 **New Features** (_v2.1_)
 
 - Added Pagination.
-- `Get` request on `/books` can receive two query parameters. `page` and `size{max:25}`
+- `Get` request on `/books` can receive two query parameters. `page` and `size{max:30}`
 - Get request on `/books` no longer returns an array of books, Instead it returns an object now.
 - You can get the array of books in the `books` property of response object.
 - Response object contains additional data like current,next,last pages, look at the response object for all the details.
@@ -42,10 +42,10 @@ Base URL:
 | query  | default value | max value | type   |
 | ------ | ------------- | --------- | ------ |
 | `page` | 1             | \*        | Number |
-| `size` | 4             | 25        | Number |
+| `size` | 4             | 30        | Number |
 
 - If you don't pass a page number, It defaults to `1`.
-- If you don't pass size, It defaults to `4`. Maximum is `25`.
+- If you don't pass size, It defaults to `4`. Maximum is `30`.
 
 **Example Request:**
 
