@@ -1,4 +1,4 @@
-if (!process.env.HEROKU) {
+if (!process.env.PRODUCTION) {
   require('dotenv').config();
 }
 const express = require('express');

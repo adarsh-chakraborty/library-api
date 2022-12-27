@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;    
+    box-sizing: border-box;
+    font-family: 'Old Standard TT', serif;
+}
+ul{
+    list-style: none; 
+    
+}
+.active{
+    color: var(--text-color-1);
+}
+:root {
+
+    --primary-color: #7F4395;
+    --secondary-color: #F9b126;
+    --text-color-1 : #E6CFED;
+    --text-color-2 : #C8AFCF;
+}
+.navigation-container{
+    background-color: var(--primary-color);
+    color: var(--text-color-2);
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    font-size: 23px;      
+}
+.nav{
+    display: flex;
+    gap: 2rem;
+    margin-right: 7rem;
+}
+.brand-logo{
+    margin-left: 7rem;
+}
+.content-container{
+    width: 218vh;
+    height: 87vh;    
+    background-image: url("assets/Background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+.book-container{
+    background-color: #E6CFED;
+    width: 180vh;
+    height: 70vh;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grid-container{   
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    background-color: #f9fafb;
+    width: 165vh;
+    height: 58vh;
+    border-radius: 5px;
+    text-align: center;
+    color: black;
+}
+.book-tabs{
+    border: 1px solid lightgrey;
+    width: 41vh;
+    height: 58vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.book-image{
+    width: 180px;
+    height: 280px;
+    overflow: hidden;   
+}
+.book-details {
+    padding-top: 4px;
+}    
+.pagination {
+    display: flex;
+    position: absolute;
+    top: 88%;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: var(--primary-color);
+    color: var(--text-color-1);
+  }
+  
+  .pagination a:hover:not(.active) {background-color:var(--text-color-2);}
+
+
+
+    
+

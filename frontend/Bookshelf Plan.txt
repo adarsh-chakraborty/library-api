@@ -1,0 +1,23 @@
+> Dashboard
+	> Applying Pagination in UI 
+	> Try to Print Data from API in Pagination
+	> Add nav-links   
+	> Add Logo
+	> Add Box-shadow
+> Add Books
+	> Form Validation
+	> Add Books to the API
+	> "Fail added" > Do not Reset 
+	> "Sucessfully added" > Form Reset 	
+> Login page
+	> Form Validation  
+	> Check user details to the API > If pass > Redirect to Dashboard and save token 
+					> If fail > Re-attempt (Do not reset form)
+	> Sign up button link  		
+> Sign up
+	> Form Validation
+	> Check availablity of username > Fail: Re-enter   
+	> Check confirm password and enter password (min 6 characters & include atleast 1 special characters &
+	  Capital letter & atleast 1 number) > Fail: Re-enter  
+	> Redirect to Login Page 
+	> login button link
