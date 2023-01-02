@@ -7,12 +7,13 @@ const {
   getAuth,
   postRegister,
   postLogin,
+  getLogin,
   postReset
 } = require('../Controller/authController');
 
-Router.route('/').all(verifyToken).get(catchAsync(getAuth));
-Router.route('/register').all(verifyToken).post(catchAsync(postRegister));
-Router.route('/login').all(verifyToken).post(catchAsync(postLogin));
+Router.route('/').get(catchAsync(getAuth));
+Router.route('/register').post(catchAsync(postRegister));
+Router.route('/login').get(catchAsync(getLogin)).post(catchAsync(postLogin));
 Router.route('/reset').all(verifyToken).post(catchAsync(postReset));
 
 module.exports = Router;

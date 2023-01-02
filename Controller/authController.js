@@ -3,6 +3,9 @@ const { AppError } = require('../lib/Error');
 const User = require('../Model/User');
 const bcrypt = require('bcryptjs');
 
+const getLogin = (req, res, next) => {
+  res.send('HII LOGIN');
+};
 const getAuth = (req, res, next) => {
   res.status(200).json({ message: 'OK', status: 200 });
 };

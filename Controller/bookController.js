@@ -2,10 +2,6 @@ const Book = require('../Model/Book');
 const mongoose = require('mongoose');
 const { AppError } = require('../lib/Error');
 
-const OK = (req, res, next) => {
-  res.status(200).json({ status: 200, message: 'OK' });
-};
-
 const GetAllBooks = async (req, res, next) => {
   try {
     let { page = 1, size = 4 } = req.query;
@@ -25,6 +21,9 @@ const GetAllBooks = async (req, res, next) => {
     const result = Book.find().limit(limit).skip(skip).select('-__v');
     const [totalBooks, books] = await Promise.all([countBooks, result]);
 
+    const x = await Book.find({});
+    console.log(x);
+
     res.json({
       totalBooks,
       page,
@@ -43,6 +42,7 @@ const GetAllBooks = async (req, res, next) => {
 
 const postBook = (req, res) => {
   const { name, book, author, price } = req.body;
+  console.log(req.file);
   if (!name || !book || !author || !price) {
     let msg = `Abe ${name ? '' : 'name,'}${book ? '' : 'book,'}${
       author ? '' : 'author,'
@@ -164,7 +164,6 @@ const getBookDetails = (req, res, next) => {
 };
 
 module.exports = {
-  OK,
   GetAllBooks,
   postBook,
   putUpdateBook,

@@ -1,74 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to Bookshelf!!!</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="/assets/Add/style.css" />
+    <script src="/assets/Add/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #filebtnlbl {
+        /* background-color: indigo; */
+        color: indigo;
+        padding: 0.5rem;
+        border: indigo 2px solid;
+        font-family: sans-serif;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        margin-left: 0;
+        align-self: flex-start;
+      }
+      #modal-bg {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        z-index: 10;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+      }
+      #modal {
+        margin: 4rem auto auto auto;
+        background-color: azure;
+        width: 60%;
+        height: 75%;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+          rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
-<body>
+        border-radius: 10px;
+        padding: 8px;
+      }
 
+      .modal-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="modal-bg" class="modal" hidden>
+      <div id="modal">
+        <div class="modal-container">
+          <div id="loader">
+            <img
+              src="/assets/loading.svg"
+              alt="Loading.. Please wait.."
+              class="loading"
+            />
+          </div>
+          <div id="loader-text">Processing your request. Please wait...</div>
+        </div>
+      </div>
+    </div>
     <header>
-        <nav class="navigation-container">
-            <div class="brand-logo">
-                <h3>Bookshelf</h3>
-            </div>
-            <div class="nav-links">
-                <ul class="nav">
-                    <li>Dashboard</li>
-                    <li class="active">Add Book</li>
-                    <li>Profile</li>
-                    <li>Logout</li>
-                </ul>
-            </div>
-        </nav>
+      <nav class="navigation-container">
+        <div class="brand-logo">
+          <h3>Bookshelf</h3>
+        </div>
+        <div class="nav-links">
+          <ul class="nav">
+            <li>Dashboard</li>
+            <li class="active">Add Book</li>
+            <li>Profile</li>
+            <li>Logout</li>
+          </ul>
+        </div>
+      </nav>
     </header>
     <main>
-        <div class="content-container">
-            <div class="Newbook-container">
-                <div class="flex-container">
-                    <div class="wrapper">
-                        <div class="heading">
-                            <h2>Add Your Favorite Book</h2>
-                        </div>
-                        <form class="form">
-                            <div class="bookinputBox">
-                                <div class="inputTitle">
-                                    <h3>Enter Book Name</h3>
-                                    <div class="purpleLine"></div>
-                                    <h3>Enter Author Name</h3>
-                                    <div class="purpleLine"></div>
-                                    <h3>Enter Price</h3>
-                                    <div class="purpleLine"></div>
-                                </div>
-                                <div class="inputBox">
-                                    <div class="input">
-                                        <input class="userInput" type="text" name="bookName" id="bookName">
-                                    </div>
-                                    <div class="input">
-                                        <input class="userInput" type="text" name="authorName" id="authorName">
-                                    </div>
-                                    <div class="input">
-                                        <input class="userInput" type="number" name="price" id="price">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="button">
-                                <button id="button" type="submit">Add Book</button>
-                            </div>
-                        </form>
+      <div class="content-container">
+        <div class="Newbook-container">
+          <div class="flex-container">
+            <div class="wrapper">
+              <div class="heading">
+                <h2>Add Your Favorite Book</h2>
+              </div>
+              <form class="form">
+                <div class="bookinputBox">
+                  <div class="inputTitle">
+                    <h3>Enter Book Name</h3>
+                    <div class="purpleLine"></div>
+                    <h3>Enter Author Name</h3>
+                    <div class="purpleLine"></div>
+                    <h3>Enter Price</h3>
+                    <div class="purpleLine"></div>
+                    <!-- <h3>Enter Image url</h3>
+                    <div class="purpleLine"></div> -->
+                    <h3>Select Image</h3>
+                    <div class="purpleLine"></div>
+                  </div>
+                  <div class="inputBox">
+                    <div class="input">
+                      <input
+                        class="userInput"
+                        type="text"
+                        name="bookName"
+                        id="bookName"
+                      />
                     </div>
+                    <div class="input">
+                      <input
+                        class="userInput"
+                        type="text"
+                        name="authorName"
+                        id="authorName"
+                      />
+                    </div>
+                    <div class="input">
+                      <input
+                        class="userInput"
+                        type="number"
+                        name="price"
+                        id="price"
+                      />
+                    </div>
+                    <!-- <div class="input">
+                      <input class="userInput" type="url" name="img" id="img" />
+                    </div> -->
+                    <div class="input">
+                      <input type="file" id="imagebtn" accept="image/*" />
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </main>
-</body>
 
+                <div class="button">
+                  <button id="button" class="uploadbtn" type="submit">
+                    Add Book
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
