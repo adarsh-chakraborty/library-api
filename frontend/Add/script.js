@@ -4,6 +4,7 @@ const price = document.getElementById('price');
 const fileBtn = document.getElementById('imagebtn');
 const addBookbtn = document.querySelector('.uploadbtn');
 const modal = document.querySelector('.modal');
+const error = document.querySelector('.error');
 
 addBookbtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -31,16 +32,27 @@ async function addBook() {
   form.append('img', fileBtn.files[0]);
 
   try {
-    const request = await fetch('/api/books', {
+    const res = await fetch('/api/books', {
       method: 'POST',
       body: form
     });
-    const response = await request.json();
+    const response = await res.json();
     console.log(response);
+    if (res.ok) {
+      const id = response.created_book.id;
+      window.location = `/books/${id}`;
+      return;
+    }
     setLoading();
+    error.innerHTML = `<h2>${
+      response?.message ?? 'Error: Something went wrong, try again later!'
+    }</h2>`;
   } catch (e) {
     setLoading();
     console.log(e);
+    error.innerHTML = `<h2>${
+      e?.message ?? 'Error: Something went wrong, try again later!'
+    }</h2>`;
   }
 }
 

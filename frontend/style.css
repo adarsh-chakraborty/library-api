@@ -33,25 +33,26 @@ ul {
   margin-left: 7rem;
 }
 .content-container {
-  width: 218vh;
-  height: 87vh;
+  width: 100%;
+  height: 100vh;
   background-image: url('assets/Background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-size: cover;
 }
 .book-container {
+  margin-top: 4rem;
   background-color: #e6cfed;
-  width: 180vh;
+  width: 85vw;
   height: 70vh;
   border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12px;
 }
 
 .loading {
@@ -60,10 +61,11 @@ ul {
 }
 .grid-container {
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(4, 1fr);
   background-color: #f9fafb;
-  width: 165vh;
-  height: 58vh;
+  width: 95%;
+  padding: 8px;
   border-radius: 5px;
   text-align: center;
   color: black;
@@ -79,7 +81,7 @@ ul {
 }
 .book-image {
   width: 180px;
-  height: 280px;
+
   overflow: hidden;
 }
 .book-details {
@@ -105,4 +107,9 @@ ul {
 
 .pagination a:hover:not(.active) {
   background-color: var(--text-color-2);
+}
+
+.book-cover {
+  width: 185px;
+  object-fit: contain;
 }

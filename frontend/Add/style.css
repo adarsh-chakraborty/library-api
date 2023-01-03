@@ -119,3 +119,21 @@ button {
 .button {
   padding: 40px 0 0 0;
 }
+main {
+  position: relative;
+}
+.error {
+  margin-top: -2px;
+
+  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  position: absolute;
+  color: #d50000;
+  background-color: #ffcdd2;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,6 +1,7 @@
 const Book = require('../Model/Book');
 const mongoose = require('mongoose');
 const { AppError } = require('../lib/Error');
+const { uploadToB2 } = require('./b2Controller');
 
 const GetAllBooks = async (req, res, next) => {
   try {
@@ -21,9 +22,6 @@ const GetAllBooks = async (req, res, next) => {
     const result = Book.find().limit(limit).skip(skip).select('-__v');
     const [totalBooks, books] = await Promise.all([countBooks, result]);
 
-    const x = await Book.find({});
-    console.log(x);
-
     res.json({
       totalBooks,
       page,
@@ -40,30 +38,45 @@ const GetAllBooks = async (req, res, next) => {
   }
 };
 
-const postBook = (req, res) => {
+const postBook = async (req, res) => {
   const { name, book, author, price } = req.body;
-  console.log(req.file);
+  const imageFile = req.file;
+
   if (!name || !book || !author || !price) {
     let msg = `Abe ${name ? '' : 'name,'}${book ? '' : 'book,'}${
       author ? '' : 'author,'
     }${price ? '' : 'price'} kon dega be?`;
 
-    throw new AppError(msg, 'MissingFieldsError', 422);
+    throw new AppError(msg, 'MissingFieldsError', 400);
   }
 
   if (isNaN(price)) {
     throw new AppError(
       'price must be a valid integer!',
       'ValidationError',
-      422
+      400
     );
   }
+
+  console.log('imageFile', imageFile);
+
+  if (!imageFile) {
+    throw new AppError(
+      'Error: Image is required! Select a image',
+      'MissingFieldsError',
+      400
+    );
+  }
+
+  const imageUrl = await uploadToB2(imageFile);
+  console.log(imageUrl);
 
   Book.create({
     name,
     book,
     author,
-    price
+    price,
+    imageUrl
   }).then((doc) => {
     res.status(201).json({
       result: 'success',

@@ -13,6 +13,14 @@
       href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap"
       rel="stylesheet"
     />
+
+    <style>
+      a,
+      a:active {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
   </head>
 
   <body>
@@ -23,10 +31,10 @@
         </div>
         <div class="nav-links">
           <ul class="nav">
-            <li class="active">Dashboard</li>
+            <a href="/"><li class="active">Dashboard</li></a>
             <a href="/add-book"><li>Add Book</li></a>
-            <li>Profile</li>
-            <li>Logout</li>
+            <a href="/profile"> <li>Profile</li></a>
+            <a href="/logout"> <li>Logout</li></a>
           </ul>
         </div>
       </nav>

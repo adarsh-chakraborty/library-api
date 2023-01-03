@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Bookshelf!!!</title>
+    <title>Bookshelf | Add Book</title>
     <link rel="stylesheet" href="/assets/Add/style.css" />
     <script src="/assets/Add/script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,6 +51,12 @@
         justify-content: center;
         align-items: center;
       }
+
+      a,
+      a:active {
+        text-decoration: none;
+        color: inherit;
+      }
     </style>
   </head>
 
@@ -76,15 +82,16 @@
         </div>
         <div class="nav-links">
           <ul class="nav">
-            <li>Dashboard</li>
-            <li class="active">Add Book</li>
-            <li>Profile</li>
-            <li>Logout</li>
+            <a href="/"><li>Dashboard</li></a>
+            <a href="/add-book" class="active"><li>Add Book</li></a>
+            <a href="/profile"> <li>Profile</li></a>
+            <a href="/logout"> <li>Logout</li></a>
           </ul>
         </div>
       </nav>
     </header>
     <main>
+      <div class="error"></div>
       <div class="content-container">
         <div class="Newbook-container">
           <div class="flex-container">

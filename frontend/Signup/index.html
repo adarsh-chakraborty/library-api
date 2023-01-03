@@ -1,63 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf | Signup</title>
+    <link rel="stylesheet" href="/assets/Signup/style.css" />
+    <script src="/assets/Signup/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Bookshelf!!!</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <div class="flex-container">
-            <div class="logo-container">
-                <a href="#">
-                    <img src="assets/Logo1.png" height="auto" width="480px" alt="Logo">
-                </a>
-            </div>
-            <div class="input-container">
-                <div class="grid-container">
-                    <div class="inputLabel">
-                        <h3>Enter Email</h3>
-                        <div class="purpleLine"></div>
-                        <h3>Enter Username</h3>
-                        <div class="purpleLine"></div>
-                        <h3>Enter Password</h3>
-                        <div class="purpleLine"></div>
-                        <h3>Confirm Password</h3>
-                        <div class="purpleLine"></div>
-                    </div>
-                    <div class="inputBox">
-                        <div class="input">
-                            <input class="userInput" type="email" name="email" id="email">
-                        </div>
-                        <div class="input">
-                            <input class="userInput" type="text" name="userName" id="userName">
-                        </div>
-                        <div class="input">
-                            <input class="userInput" type="password" name="passwordNew" id="passwordNew">
-                        </div>
-                        <div class="input">
-                            <input class="userInput" type="password" name="passwordConf" id="passwordConf">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="button">
-                    <button type="submit">Sign Up </button>
-                </div>
-            </div>
-            <div class="message">
-                Already have an account? <a href="#">Login</a> now!
-            </div>
+      <div class="flex-container">
+        <div class="logo-container">
+          <a href="#">
+            <img
+              src="/assets/Signup/assets/Logo1.png"
+              height="auto"
+              width="480px"
+              alt="Logo"
+            />
+          </a>
         </div>
+        <div class="input-container">
+          <div class="grid-container">
+            <div class="inputLabel">
+              <h3>Enter Email</h3>
+              <div class="purpleLine"></div>
+              <h3>Enter Username</h3>
+              <div class="purpleLine"></div>
+              <h3>Enter Password</h3>
+              <div class="purpleLine"></div>
+              <h3>Confirm Password</h3>
+              <div class="purpleLine"></div>
+            </div>
+            <div class="inputBox">
+              <div class="input">
+                <input class="userInput" type="email" name="email" id="email" />
+              </div>
+              <div class="input">
+                <input
+                  class="userInput"
+                  type="text"
+                  name="userName"
+                  id="userName"
+                />
+              </div>
+              <div class="input">
+                <input
+                  class="userInput"
+                  type="password"
+                  name="passwordNew"
+                  id="passwordNew"
+                />
+              </div>
+              <div class="input">
+                <input
+                  class="userInput"
+                  type="password"
+                  name="passwordConf"
+                  id="passwordConf"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="button">
+            <button type="submit">Sign Up</button>
+          </div>
+        </div>
+        <div class="message">
+          Already have an account? <a href="#">Login</a> now!
+        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

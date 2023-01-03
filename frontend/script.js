@@ -29,8 +29,8 @@ function renderBooks(data) {
   data.books.forEach((book) => {
     html += `<div class="book-tabs">
         <div class="book-image">
-            <a href="#">
-                <img src="/assets/assets/dummy-book.svg" width="185px" alt="">
+            <a href="/books/${book._id}">
+                <img src="${book.imageUrl}" class="book-cover" alt="">
             </a>
         </div>
         <div class="book-details">

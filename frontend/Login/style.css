@@ -1,101 +1,97 @@
-*{
-    margin: 0;
-    padding: 0;    
-    box-sizing: border-box;
-    font-family: 'Old Standard TT', serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Old Standard TT', serif;
 }
 :root {
-    --primary-color: #7F4395;
-    --secondary-color: #F9b126;
-    --text-color-1 : #E6CFED;
-    --text-color-2 : #C8AFCF;
+  --primary-color: #7f4395;
+  --secondary-color: #f9b126;
+  --text-color-1: #e6cfed;
+  --text-color-2: #c8afcf;
 }
 
 img.logo {
-    width: 280px;
-    height: auto;
+  width: 280px;
+  height: auto;
 }
-body{
-    background: url('assets/Background Color.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: auto;
-    height: 30rem;
+body {
+  background: url('assets/Background Color.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  height: 30rem;
 }
-h3{
-    font-weight: 400;
-    font-size: 29px;
-    padding: 34px 0 0 0;
-} 
+h3 {
+  font-weight: 400;
+  font-size: 29px;
+  padding: 34px 0 0 0;
+}
 .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2,50%);
-    width: auto;
-    height: 18.5rem;
-    box-shadow: 3px 5px #e6cfed;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  width: auto;
+  height: 18.5rem;
+  box-shadow: 3px 5px #e6cfed;
 }
 .logo-container {
-    margin: -42px 0 0 0;
-    height: 215px;
+  margin: -42px 0 0 0;
+  height: 215px;
 }
 .inputLabel {
-    background-color: #f9fafb;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 1px;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1px;
 }
 .inputBox {
-    background-color: #7F4395;
+  background-color: #7f4395;
 }
 .input-container {
-    width: 33rem;
-    height: 21.5rem;
+  width: 33rem;
+  height: 21.5rem;
 }
 .userInput {
-    height: 34px;
-    width: 34vh;
-    border-radius: 3px;
-    border: 1px solid var(--text-color-2);
-    
+  padding: 4px 8px;
+  height: 34px;
+  width: 34vh;
+  border-radius: 3px;
+  border: 1px solid var(--text-color-2);
 }
-.input {   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 36px 0 0 0;
-    
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 36px 0 0 0;
 }
 
 .purpleLine {
-    border-bottom: 2px solid var(--primary-color);
-    height: 1px;
-    width: 100px;
+  border-bottom: 2px solid var(--primary-color);
+  height: 1px;
+  width: 100px;
 }
 .button {
-    position: absolute;
-    top: 59vh;
-    left: 93vh;
+  position: absolute;
+  top: 59vh;
+  left: 93vh;
 }
 button {
-    padding: 12px 75px 12px 75px;
-    font-size: 25px;
-    background-color: var(--secondary-color);
-    border: none;
-    color: black; 
-    border-radius: 3px;  
+  padding: 12px 75px 12px 75px;
+  font-size: 25px;
+  background-color: var(--secondary-color);
+  border: none;
+  color: black;
+  border-radius: 3px;
 }
 .message {
-    font-size: 24px;
+  font-size: 24px;
 }
-
-
