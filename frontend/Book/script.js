@@ -50,7 +50,7 @@ const fetchBook = async () => {
     container.innerHTML = html;
 
     if (res.status != 200) {
-      setError();
+      setError(data.message);
       return;
     }
   } catch (err) {
@@ -58,7 +58,7 @@ const fetchBook = async () => {
   }
 };
 
-function setError() {
-  container.innerHTML = `<h2>Error occured</h2>`;
+function setError(msg = 'Some error occured, try again later..') {
+  container.innerHTML = `<h2 class="error">${msg}</h2>`;
 }
 fetchBook();
