@@ -16,7 +16,7 @@ img.logo {
   height: auto;
 }
 body {
-  background: url('assets/Background Color.png');
+  background: url('https://i.postimg.cc/P5ZJTdmd/Background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -80,10 +80,13 @@ h3 {
   width: 100px;
 }
 .button {
-  cursor: pointer;
   position: absolute;
   top: 59vh;
   left: 93vh;
+}
+
+.btn {
+  cursor: pointer;
 }
 button {
   padding: 12px 75px 12px 75px;

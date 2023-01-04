@@ -16,7 +16,7 @@ img.logo {
   height: auto;
 }
 body {
-  background: url('assets/Background Color.png');
+  background: url('https://i.postimg.cc/P5ZJTdmd/Background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,7 +87,7 @@ h3 {
   left: 93vh;
 }
 button {
-  padding: 8px 75px 8px 75px;
+  padding: 8px 14px;
   font-size: 23px;
   background-color: var(--secondary-color);
   border: none;
