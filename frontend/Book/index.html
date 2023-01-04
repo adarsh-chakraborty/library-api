@@ -7,6 +7,13 @@
     <title>Book Details</title>
     <link rel="stylesheet" href="/assets/Book/style.css" />
     <script src="/assets/Book/script.js" defer></script>
+    <style>
+      a,
+      a:active {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -16,10 +23,10 @@
         </div>
         <div class="nav-links">
           <ul class="nav">
-            <li>Dashboard</li>
-            <li>Add Book</li>
-            <li>Profile</li>
-            <li>Logout</li>
+            <a href="/"><li>Dashboard</li></a>
+            <a href="/add-book"><li>Add Book</li></a>
+            <a href="/profile"> <li>Profile</li></a>
+            <a href="/logout"> <li>Logout</li></a>
           </ul>
         </div>
       </nav>

@@ -78,10 +78,11 @@ const postBook = async (req, res) => {
     price,
     imageUrl
   }).then((doc) => {
+    console.log('Created book', doc);
     res.status(201).json({
       result: 'success',
       message: 'Book created!',
-      created_book: { ...doc._doc }
+      id: doc._id
     });
   });
 };

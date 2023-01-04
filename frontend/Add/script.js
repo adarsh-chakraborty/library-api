@@ -39,7 +39,7 @@ async function addBook() {
     const response = await res.json();
     console.log(response);
     if (res.ok) {
-      const id = response.created_book.id;
+      const id = response.id;
       window.location = `/books/${id}`;
       return;
     }
