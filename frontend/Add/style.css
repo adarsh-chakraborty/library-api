@@ -32,7 +32,7 @@ ul {
   margin-left: 7rem;
 }
 .content-container {
-  background-image: url('/assets/Background.png');
+  background-image: url('/assets/assets/Background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

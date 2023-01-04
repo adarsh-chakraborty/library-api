@@ -57,6 +57,7 @@ h3 {
   background-color: #7f4395;
 }
 .input-container {
+  position: relative;
   width: 33rem;
   height: 21.5rem;
 }
@@ -97,4 +98,33 @@ button {
 .message {
   padding: 15px 0 0 0;
   font-size: 24px;
+}
+.error {
+  font-weight: bold;
+  left: 50%;
+  width: max-content;
+  position: absolute;
+  transform: translate(-50%, -100%);
+  color: #d50000;
+  background-color: #ffcdd2;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success {
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -100%);
+  color: #1b5e20;
+  background-color: #a5d6a7;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.success h2,
+.error h2 {
+  padding: 2px 8px;
 }

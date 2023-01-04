@@ -25,8 +25,8 @@ const {
 } = require('../Controller/bookController');
 
 Router.route('/books')
+  .all(verifyToken)
   .get(catchASync(GetAllBooks))
-  // .all(catchASync(verifyToken))
   .post(upload.single('img'), catchASync(postBook))
   .put(catchASync(putUpdateBook))
   .delete(catchASync(deleteBook));

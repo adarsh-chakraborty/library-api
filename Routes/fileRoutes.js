@@ -1,4 +1,7 @@
 const express = require('express');
+const verifyToken = require('../lib/verifyToken');
+const { logout } = require('../Controller/authController');
+
 const Router = express.Router();
 
 const getAddBook = async (req, res, next) => {
@@ -15,8 +18,15 @@ const getLogin = async (req, res, next) => {
 const getSignup = async (req, res, next) => {
   res.sendFile(require.main.path + '/frontend/Signup/index.html');
 };
-Router.get('/add-book', getAddBook);
-Router.get('/books/:bookid', getBook);
+
+const getProfile = async (req, res, next) => {
+  res.sendFile(require.main.path + '/frontend/Profile/index.html');
+};
 Router.get('/login', getLogin);
 Router.get('/signup', getSignup);
+Router.get('/logout', logout);
+Router.get('/profile', verifyToken, getProfile);
+Router.get('/add-book', verifyToken, getAddBook);
+Router.get('/books/:bookid', verifyToken, getBook);
+
 module.exports = Router;

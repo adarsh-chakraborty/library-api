@@ -4,16 +4,13 @@ const verifyToken = require('../lib/verifyToken');
 const catchAsync = require('../utils/catchAsync');
 
 const {
-  getAuth,
   postRegister,
   postLogin,
-  getLogin,
-  postReset
+  getProfile
 } = require('../Controller/authController');
 
-Router.route('/').get(catchAsync(getAuth));
-Router.route('/register').post(catchAsync(postRegister));
-Router.route('/login').get(catchAsync(getLogin)).post(catchAsync(postLogin));
-Router.route('/reset').all(verifyToken).post(catchAsync(postReset));
+Router.route('/signup').post(catchAsync(postRegister));
+Router.route('/login').post(catchAsync(postLogin));
+Router.route('/profile').get(verifyToken, catchAsync(getProfile));
 
 module.exports = Router;

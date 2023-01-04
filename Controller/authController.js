@@ -2,18 +2,14 @@ const { AppError } = require('../lib/Error');
 
 const User = require('../Model/User');
 const bcrypt = require('bcryptjs');
-
-const getLogin = (req, res, next) => {
-  res.send('HII LOGIN');
-};
-const getAuth = (req, res, next) => {
-  res.status(200).json({ message: 'OK', status: 200 });
-};
+const jwt = require('jsonwebtoken');
 
 const postRegister = async (req, res, next) => {
+  console.log(req.body);
   const { email, username, password } = req.body;
 
   if (!email || !username || !password) {
+    console.log(email, username, password);
     throw new AppError(
       'All the fields (email, username,password) are required!',
       'MissingFieldsError',
@@ -47,10 +43,14 @@ const postRegister = async (req, res, next) => {
 
   const hashedPassword = await bcrypt.hash(password, 12);
   const doc = await User.create({ email, username, password: hashedPassword });
-  res.json({ result: 'success', status: 201, user_created: doc });
+  res.status(201).json({
+    result: 'success',
+    message: `Account Created! You can login now! Redirecting in 5s..`
+  });
 };
 
 const postLogin = async (req, res, next) => {
+  console.log('login request received');
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -71,18 +71,43 @@ const postLogin = async (req, res, next) => {
   }
 
   if (bcrypt.compareSync(password, user.password)) {
-    return res.json({
+    // ALL OK
+
+    const refreshToken = jwt.sign(
+      { id: user._id, email: user.email, username: user.username },
+      process.env.SECRET_REFRESH,
+      {
+        expiresIn: '7d'
+      }
+    );
+
+    res.cookie('auth', refreshToken, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+
+    return res.status(202).json({
       result: 'OK',
-      message: 'You are now logged in!',
-      token: 'superdoge1234'
+      message: 'You are now logged in!'
     });
   }
 
   throw new AppError('Wrong Username or password', 'AuthorizationError', 401);
 };
 
-const postReset = (req, res, next) => {
+const getProfile = async (req, res, next) => {
   // to be implemented
+  const { email, username } = req.user;
+  return res.json({ email, username });
+};
+
+const logout = (req, res, next) => {
+  res.clearCookie('auth', {
+    httpOnly: true,
+    secure: true
+  });
+  res.redirect('/login');
 };
 
 function isValidEmail(email) {
@@ -91,4 +116,4 @@ function isValidEmail(email) {
   return emailPattern.test(email);
 }
 
-module.exports = { getAuth, postRegister, postLogin, postReset };
+module.exports = { postRegister, postLogin, getProfile, logout };

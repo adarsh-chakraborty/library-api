@@ -80,6 +80,7 @@ h3 {
   width: 100px;
 }
 .button {
+  cursor: pointer;
   position: absolute;
   top: 59vh;
   left: 93vh;
@@ -94,4 +95,34 @@ button {
 }
 .message {
   font-size: 24px;
+}
+
+.error {
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -100%);
+  color: #d50000;
+  background-color: #ffcdd2;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success {
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -100%);
+  color: #1b5e20;
+  background-color: #a5d6a7;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success h2,
+.error h2 {
+  padding: 2px 8px;
 }
